@@ -1,4 +1,4 @@
-name: 'Skopeo Copy Action'
+name: 'Docker Skopeo Copy Action'
 description: 'Copies a Docker image from one registry to another'
 author: 'TrueMark'
 inputs:
