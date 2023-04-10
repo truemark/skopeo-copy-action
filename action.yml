@@ -29,7 +29,7 @@ inputs:
     default: 'false'
 runs:
   using: 'docker'
-  image: 'quay.io/skopeo/stable:latest'
+  image: 'docker://quay.io/skopeo/stable:latest'
   args:
     - '--insecure-policy'
     - 'copy'
