@@ -1,0 +1,49 @@
+name: 'Skopeo Copy Action'
+description: 'Copies a Docker image from one registry to another'
+inputs:
+  src-image:
+    required: true
+    description: 'The source image to copy'
+  dest-image:
+    required: true
+    description: 'The destination image to copy'
+  src-username:
+    required: true
+    description: 'The username to use when authenticating to the source registry'
+  src-password:
+    required: true
+    description: 'The password to use when authenticating to the source registry'
+  dest-username:
+    required: true
+    description: 'The username to use when authenticating to the destination registry'
+  dest-password:
+    required: true
+    description: 'The password to use when authenticating to the destination registry'
+  multi-arch:
+    required: false
+    description: 'The architecture to copy'
+    default: 'all'
+  insecure-policy:
+    required: false
+    description: 'Whether to use an insecure policy'
+    default: 'false'
+runs:
+  using: 'docker'
+  image: 'quay.io/skopeo/stable:latest'
+  args:
+    - '--insecure-policy'
+    - 'copy'
+    - '${{ inputs.src-image }}'
+    - '${{ inputs.dest-image }}'
+    - '--src-username'
+    - '${{ inputs.src-username }}'
+    - '--src-password'
+    - '${{ inputs.src-password }}'
+    - '--dest-username'
+    - '${{ inputs.dest-username }}'
+    - '--dest-password'
+    - '${{ inputs.dest-password }}'
+    - '--multi-arch'
+    - '${{ inputs.multi-arch }}'
+    - '--insecure-policy'
+    - '${{ inputs.insecure-policy }}'
