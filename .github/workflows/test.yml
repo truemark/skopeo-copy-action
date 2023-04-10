@@ -50,8 +50,8 @@ jobs:
       - name: Copy to ECR
         uses: ./
         with:
-          src-image: "docker://truemark/aws-cdk:beta"
-          dest-image: "docker://public.ecr.aws/truemark/aws-cdk:beta"
+          src-image: "docker://truemark/skopeo-copy-action-test:beta"
+          dest-image: "docker://public.ecr.aws/truemark/skopeo-copy-action-test:beta"
           src-username: "${{ secrets.DOCKER_HUB_USERNAME }}"
           src-password: "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}"
           dest-username: "${{ steps.ecr-login.outputs.docker_username_public_ecr_aws }}"
