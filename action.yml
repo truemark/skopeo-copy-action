@@ -1,5 +1,6 @@
 name: 'Skopeo Copy Action'
 description: 'Copies a Docker image from one registry to another'
+author: 'TrueMark'
 inputs:
   src-image:
     required: true
