@@ -23,10 +23,6 @@ inputs:
     required: false
     description: 'The architecture to copy'
     default: 'all'
-  insecure-policy:
-    required: false
-    description: 'Whether to use an insecure policy'
-    default: 'false'
 runs:
   using: 'docker'
   image: 'docker://quay.io/skopeo/stable:latest'
@@ -44,5 +40,3 @@ runs:
     - "${{ inputs.dest-password }}"
     - '--multi-arch'
     - "${{ inputs.multi-arch }}"
-    - '--insecure-policy'
-    - "${{ inputs.insecure-policy }}"
