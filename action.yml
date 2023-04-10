@@ -31,19 +31,18 @@ runs:
   using: 'docker'
   image: 'docker://quay.io/skopeo/stable:latest'
   args:
-    - '--insecure-policy'
     - 'copy'
-    - '${{ inputs.src-image }}'
-    - '${{ inputs.dest-image }}'
+    - "${{ inputs.src-image }}"
+    - "${{ inputs.dest-image }}"
     - '--src-username'
-    - '${{ inputs.src-username }}'
+    - "${{ inputs.src-username }}"
     - '--src-password'
-    - '${{ inputs.src-password }}'
+    - "${{ inputs.src-password }}"
     - '--dest-username'
-    - '${{ inputs.dest-username }}'
+    - "${{ inputs.dest-username }}"
     - '--dest-password'
-    - '${{ inputs.dest-password }}'
+    - "${{ inputs.dest-password }}"
     - '--multi-arch'
-    - '${{ inputs.multi-arch }}'
+    - "${{ inputs.multi-arch }}"
     - '--insecure-policy'
-    - '${{ inputs.insecure-policy }}'
+    - "${{ inputs.insecure-policy }}"
