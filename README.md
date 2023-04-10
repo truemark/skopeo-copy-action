@@ -17,14 +17,14 @@ GitHub action used to start an SSH agent and add a private key to it.
         with:
           registry-type: public
       - name: Copy beta to ECR
-        uses: truemark/skopeo-copy-action@616e8dff7e3d6792ea4ba033d49ab8fb1066c79a
+        uses: truemark/skopeo-copy-action@v1
         with:
           src-image: "docker://truemark/aws-cdk:beta"
           dest-image: "docker://public.ecr.aws/truemark/aws-cdk:beta"
           src-username: "${{ secrets.DOCKER_HUB_USERNAME }}"
           src-password: "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}"
-          dest-username: "${{ steps.ecr-login.outputs.dockerUsername }}"
-          dest-password: "${{ steps.ecr-login.outputs.dockerPassword }}"
+          dest-username: "${{ steps.ecr-login.outputs.docker_username_public_ecr_aws }}"
+          dest-password: "${{ steps.ecr-login.outputs.docker_password_public_ecr_aws }}"
           multi-arch: "all"
 ```
 
@@ -39,4 +39,3 @@ GitHub action used to start an SSH agent and add a private key to it.
 | dest-username  | string     | Yes      | Destination username                                                     |
 | dest-password  | string     | Yes      | Destination password                                                     |
 | multi-arch     | boolean    | No       | How to handle multi-arch images. System, all or index-only. Default: all |
-| insecre-policy | boolean    | No       | Allow insecure TLS connections. Default: false                           |
