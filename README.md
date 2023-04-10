@@ -11,11 +11,16 @@ GitHub action used to start an SSH agent and add a private key to it.
 ## Examples
 
 ```yml
-      - name: Copy beta to ECR
-        uses: truemark/skopeo-copy-action@v1
+      - name: Login to ECR
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v1
         with:
-          src-image: "truemark/aws-cdk:beta"
-          dest-image: "public.ecr.aws/truemark/aws-cdk:beta"
+          registry-type: public
+      - name: Copy beta to ECR
+        uses: truemark/skopeo-copy-action@616e8dff7e3d6792ea4ba033d49ab8fb1066c79a
+        with:
+          src-image: "docker://truemark/aws-cdk:beta"
+          dest-image: "docker://public.ecr.aws/truemark/aws-cdk:beta"
           src-username: "${{ secrets.DOCKER_HUB_USERNAME }}"
           src-password: "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}"
           dest-username: "${{ steps.ecr-login.outputs.dockerUsername }}"
